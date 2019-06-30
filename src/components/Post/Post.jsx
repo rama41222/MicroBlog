@@ -53,7 +53,7 @@ class Post extends Component {
         const posts = this.createPosts();
         return(
             <div>
-                <h1>Blog</h1>
+                <h1>Micro Blog</h1>
                 {posts}
             </div>
         )
