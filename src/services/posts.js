@@ -1,7 +1,7 @@
 import { apiClient } from './../utils';
 
 const addPost = (post) => {
-
+    return apiClient.post('', post).catch(console.log);
 };
 
 const getAllPosts = async () => {

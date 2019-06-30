@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { PostService } from './../../services'
 class Post extends Component {
     constructor(props) {
@@ -52,10 +52,9 @@ class Post extends Component {
     render() {
         const posts = this.createPosts();
         return(
-            <div>
-                <h1>Micro Blog</h1>
+            <Fragment>
                 {posts}
-            </div>
+            </Fragment>
         )
     }
 }
