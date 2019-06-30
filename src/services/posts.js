@@ -4,8 +4,8 @@ const addPost = (post) => {
 
 };
 
-const getAllPosts = () => {
-
+const getAllPosts = async () => {
+    return apiClient.get().catch(console.log);
 };
 
 const getPost = (id) => {
