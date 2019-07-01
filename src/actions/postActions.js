@@ -1,4 +1,4 @@
-import { FETCH_POSTS } from './types';
+import { FETCH_POSTS, CREATE_POST } from './types';
 import { PostService } from './../services';
 
 export const fetchPosts = () => async dispatch => {
@@ -7,4 +7,14 @@ export const fetchPosts = () => async dispatch => {
         type: FETCH_POSTS,
         payload: data
     })
+};
+
+export const createPost = (post) => async dispatch => {
+    const { data } = await PostService.addPost(post);
+    if(data) {
+       dispatch({
+           type: CREATE_POST,
+           payload: data
+       });
+    }
 };
