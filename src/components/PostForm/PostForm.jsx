@@ -1,9 +1,11 @@
 import React, { Component, Fragment } from 'react';
-import { PostService } from './../../services';
+import  { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import {  createPost } from './../../actions/postActions';
 
 class PostForm extends Component {
     constructor(props){
-        super(props)
+        super(props);
         this.state = {
             title: '',
             body: ''
@@ -72,7 +74,7 @@ class PostForm extends Component {
             alert('Title and body is required');
             return;
         }
-        const { data } = await PostService.addPost(this.state);
+        this.props.createPost(this.state);
     };
     
     render() {
@@ -125,4 +127,8 @@ class PostForm extends Component {
     }
 }
 
-export default PostForm;
+PostForm.propTypes = {
+    createPost: PropTypes.func.isRequired,
+};
+
+export default connect(null, { createPost })(PostForm);
