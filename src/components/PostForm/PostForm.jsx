@@ -17,7 +17,7 @@ class PostForm extends Component {
           margin: '5px',
           borderRadius: '10px',
           webKitBoxShadow: '0 8px 6px -6px black',
-          mozBoxShadow: '0 8px 6px -6px black',
+          MozBoxShadow: '0 8px 6px -6px black',
           boxShadow: '0 8px 6px -6px black',
       }
     };
@@ -83,7 +83,7 @@ class PostForm extends Component {
                         <div style={ this.formGroupStyle() }>
                             <label
                                 style={ this.inputLabelStyle() }
-                                for='title'>Title
+                                htmlFor='title'>Title
                             </label>
                             <input
                                 required='true'
@@ -98,7 +98,7 @@ class PostForm extends Component {
                         <div style={ this.formGroupStyle() }>
                             <label
                                 style={ this.inputLabelStyle() }
-                                for='body'>Content
+                                htmlFor='body'>Content
                             </label>
                             <textarea
                                 required='true'

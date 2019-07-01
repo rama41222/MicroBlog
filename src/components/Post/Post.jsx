@@ -1,16 +1,10 @@
 import React, { Component, Fragment } from 'react';
-import { PostService } from './../../services'
+import { connect } from 'react-redux';
+import { fetchPosts } from "../../actions/postActions";
+
 class Post extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            posts: []
-        }
-    }
-    
     async componentWillMount() {
-        const { data } = await PostService.getAllPosts();
-        this.setState({ posts: data });
+     await this.props.fetchPosts();
     }
     
     postTitleStyle = () => {
@@ -42,7 +36,7 @@ class Post extends Component {
     };
     
     createPosts = () => {
-      return this.state.posts.map(post =>(
+      return this.props.posts.map(post =>(
           <div style={this.postStyle()} key={post.id}>
               <p style={this.postTitleStyle()}>{post.title}</p>
               <p style={this.postBodyStyle()}>{post.body}</p>
@@ -50,13 +44,18 @@ class Post extends Component {
       ));
     };
     render() {
-        const posts = this.createPosts();
+        const p = this.createPosts();
         return(
             <Fragment>
-                {posts}
+                {p}
             </Fragment>
         )
     }
 }
 
-export default Post;
+const mapStateToProps = state => ({
+    posts: state.posts.items,
+    
+});
+
+export default connect(mapStateToProps, { fetchPosts })(Post);

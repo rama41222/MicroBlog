@@ -1,0 +1,13 @@
+const FETCH_POSTS = 'FETCH_POSTS';
+const CREATE_POST = 'CREATE_POST';
+const GET_POST = 'GET_POST';
+const UPDATE_POST = 'UPDATE_POST';
+const DELETE_POST = 'DELETE_POST';
+
+export {
+    FETCH_POSTS,
+    CREATE_POST,
+    GET_POST,
+    UPDATE_POST,
+    DELETE_POST,
+}
