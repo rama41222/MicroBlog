@@ -1,10 +1,17 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { fetchPosts } from "../../actions/postActions";
 
 class Post extends Component {
     async componentWillMount() {
      await this.props.fetchPosts();
+    }
+    
+    componentWillReceiveProps(nextProps, nextContext) {
+        if(nextProps.newPost) {
+            this.props.posts.unshift(nextProps.newPost);
+        }
     }
     
     postTitleStyle = () => {
@@ -55,7 +62,14 @@ class Post extends Component {
 
 const mapStateToProps = state => ({
     posts: state.posts.items,
-    
+    newPost: state.posts.item
 });
+
+Post.propTypes = {
+    fetchPosts: PropTypes.func.isRequired,
+    posts: PropTypes.array.isRequired,
+    newPost: PropTypes.object
+    
+};
 
 export default connect(mapStateToProps, { fetchPosts })(Post);
